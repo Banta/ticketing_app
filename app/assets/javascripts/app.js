@@ -25,6 +25,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
           controller: 'SignUpCtrl'
       })
 
+      .state('forgot_password', {
+          url: '/forgot_password',
+          templateUrl: '/templates/forgot_password.html',
+          controller: 'ForgotPasswordCtrl'
+      })
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('home');
 });
