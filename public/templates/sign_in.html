@@ -1,27 +1,43 @@
+<div class="alert alert-{{alert.type}}" ng-show="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <div id="flash_{{alert.type}}">{{alert.message}}</div>
+</div>
+
 <div class="authform">
-    <form role="form" class="new_project_owner" id="new_project_owner" action="/project_owners/sign_in"
-          accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;"/><input type="hidden"
-                                                                                                         name="authenticity_token"
-                                                                                                         value="dKX77FXv/94PBQO7LE6hyFUY3TNQeF2xmYSTSar+OrEoOaLB95KHtqh3VjMHbtNUJI0TB48AJPdTKb+A6qFb1A=="/>
+    <form name="userForm" novalidate>
         <h3>Sign in</h3>
 
-        <div class="form-group">
+        <div class="form-group" ng-class="{'has-error': userForm.email.$invalid && showErrors}">
             <a class="right" ui-sref="sign_up">Sign up</a>
-            <label for="project_owner_email">Email</label>
-            <input autofocus="autofocus" class="form-control" type="email" value="" name="project_owner[email]"
-                   id="project_owner_email"/>
+            <label class="control-label">Email</label>
+            <input autofocus="autofocus" class="form-control" type="email" name="email" ng-model="data.email"
+                   ng-pattern="/^.+@.+\..+$/"
+                   required/>
+
+            <div class="help-block" ng-messages="userForm.email.$error" ng-show="showErrors">
+                <div ng-message-exp="['required']">Email is required</div>
+                <div ng-message-exp="['pattern']">Email format is not valid</div>
+            </div>
         </div>
-        <div class="form-group">
+
+        <div class="form-group" ng-class="{'has-error': userForm.password.$invalid && showErrors}">
             <a class="right" ui-sref="forgot_password">Forgot password?</a>
-            <label for="project_owner_password">Password</label>
-            <input class="form-control" type="password" name="project_owner[password]" id="project_owner_password"/>
+            <label class="control-label">Password</label>
+            <input class="form-control" type="password" name="password" ng-model="data.password" ng-minlength="6"
+                   required/>
+
+            <div class="help-block" ng-messages="userForm.password.$error" ng-show="showErrors">
+                <div ng-message-exp="['required']">Password is required</div>
+                <div ng-message-exp="['minlength']">Password should be minimum of 6 characters</div>
+            </div>
         </div>
-        <input type="submit" name="commit" value="Sign in" class="button right"/>
+
+        <input type="submit" name="commit" value="Sign in" ng-click="submitForm(userForm, data)"
+               class="button right"/>
         <div class="checkbox" style="width:150px">
             <label>
-                <input name="project_owner[remember_me]" type="hidden" value="0"/><input type="checkbox" value="1"
-                                                                                         name="project_owner[remember_me]"
-                                                                                         id="project_owner_remember_me"/>
+                <input name="remember_me" type="hidden" ng-model="data.remember_me" value="0"/>
+                <input type="checkbox" value="1" name="remember_me" ng-model="data.remember_me"/>
                 Remember me
             </label>
         </div>
