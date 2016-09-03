@@ -1,4 +1,4 @@
-var app = angular.module("mainApp", ['ngRoute', 'ui.router']);
+var app = angular.module("app", ['ngRoute', 'ui.router']);
 app.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
       .state('home', {
