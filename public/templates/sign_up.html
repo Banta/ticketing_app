@@ -1,0 +1,28 @@
+<div class="authform">
+    <form role="form" class="new_project_owner" id="new_project_owner" action="/project_owners" accept-charset="UTF-8"
+          method="post"><input name="utf8" type="hidden" value="&#x2713;"/><input type="hidden"
+                                                                                  name="authenticity_token"
+                                                                                  value="l3xmPmT8+Tk59OnJQ5dOWezc+rEgkDrM9nm4Hj6wbI7L4D8TxoGBUZ6GvEFotzzFnUk0hf/oQ4o81JTXfu8N6w=="/>
+        <h3>Sign up</h3>
+
+        <div class="form-group">
+            <label for="project_owner_name">Name</label>
+            <input autofocus="autofocus" class="form-control" type="text" name="project_owner[name]"
+                   id="project_owner_name"/>
+        </div>
+        <div class="form-group">
+            <label for="project_owner_email">Email</label>
+            <input class="form-control" type="email" value="" name="project_owner[email]" id="project_owner_email"/>
+        </div>
+        <div class="form-group">
+            <label for="project_owner_password">Password</label>
+            <input class="form-control" type="password" name="project_owner[password]" id="project_owner_password"/>
+        </div>
+        <div class="form-group">
+            <label for="project_owner_password_confirmation">Password confirmation</label>
+            <input class="form-control" type="password" name="project_owner[password_confirmation]"
+                   id="project_owner_password_confirmation"/>
+        </div>
+        <input type="submit" name="commit" value="Sign up" class="button right"/>
+    </form>
+</div>
