@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'devise' # Authentication gem
+gem 'sendgrid' # Send email using sendgrid
 
 group :development do
   gem 'web-console', '~> 2.0' # Access an IRB console on exception pages
