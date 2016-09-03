@@ -1,0 +1,10 @@
+<%# if project_owner_signed_in? %>
+<li><%= link_to 'My projects', '#' %></li>
+<li><%= link_to 'Edit account', '#' %></li>
+<li><%= link_to 'Sign out', '#', :method => 'delete' %></li>
+<%# else %>
+<li><a ui-sref="about">About</a></li>
+<li><a href="mailto:info@fundisapp.com">Contact</a></li>
+<li><%= link_to 'Sign in', '#' %></li>
+<li><%= link_to 'Sign up', '#' %></li>
+<%# end %>
