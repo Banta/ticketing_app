@@ -5,6 +5,13 @@
 
         <div class="row">
             <div class="col-lg-12">
+
+                <!--Flash message-->
+                <div class="alert alert-{{alert.type}} alert-messages" ng-show="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <div id="flash_{{alert.type}}">{{alert.message}}</div>
+                </div>
+
                 <div class="intro-message">
                     <h1>Fundis App</h1>
                     <h3>An app makes reporting and managing tickets easy</h3>

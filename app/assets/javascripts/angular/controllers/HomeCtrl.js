@@ -1,3 +1,9 @@
 app.controller('HomeCtrl', function($scope) {
-    $scope.message = "This page will be used to display add student form";
+    
+    // Check if there is a flash message sent from another controller
+    if ($localstorage.getObject('alert')) {
+        $scope.alert = $localstorage.getObject('alert')
+        $localstorage.remove('alert')
+    }
+    
 });
