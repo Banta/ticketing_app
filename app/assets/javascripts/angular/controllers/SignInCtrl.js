@@ -1,6 +1,11 @@
-app.controller('SignInCtrl', function ($scope) {
+app.controller('SignInCtrl', function ($scope, $localstorage) {
     $scope.showErrors = false
     $scope.data = {}
+
+    if ($localstorage.getObject('alert')) {
+        $scope.alert = $localstorage.getObject('alert')
+        $localstorage.remove('alert')
+    }
 
     $scope.submitForm = function (userForm, data) {
 
