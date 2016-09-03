@@ -9,7 +9,6 @@ class Api::V1::UsersController < Api::V1::BaseController
   def create
     user = User.new(user_params)
     if user.save
-      user.confirm
       render json: user, status: 201, location: [:api, user]
     else
       render json: { errors: user.errors }, status: 422
@@ -20,7 +19,6 @@ class Api::V1::UsersController < Api::V1::BaseController
     user = current_user
 
     if user.update_attributes(user_params)
-      user.confirm
       render json: user, status: 200, location: [:api, user]
     else
       render json: { errors: user.errors }, status: 422
