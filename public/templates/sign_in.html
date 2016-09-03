@@ -1,0 +1,29 @@
+<div class="authform">
+    <form role="form" class="new_project_owner" id="new_project_owner" action="/project_owners/sign_in"
+          accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;"/><input type="hidden"
+                                                                                                         name="authenticity_token"
+                                                                                                         value="dKX77FXv/94PBQO7LE6hyFUY3TNQeF2xmYSTSar+OrEoOaLB95KHtqh3VjMHbtNUJI0TB48AJPdTKb+A6qFb1A=="/>
+        <h3>Sign in</h3>
+
+        <div class="form-group">
+            <a class="right" href="/project_owners/sign_up">Sign up</a>
+            <label for="project_owner_email">Email</label>
+            <input autofocus="autofocus" class="form-control" type="email" value="" name="project_owner[email]"
+                   id="project_owner_email"/>
+        </div>
+        <div class="form-group">
+            <a class="right" href="/project_owners/password/new">Forgot password?</a>
+            <label for="project_owner_password">Password</label>
+            <input class="form-control" type="password" name="project_owner[password]" id="project_owner_password"/>
+        </div>
+        <input type="submit" name="commit" value="Sign in" class="button right"/>
+        <div class="checkbox" style="width:150px">
+            <label>
+                <input name="project_owner[remember_me]" type="hidden" value="0"/><input type="checkbox" value="1"
+                                                                                         name="project_owner[remember_me]"
+                                                                                         id="project_owner_remember_me"/>
+                Remember me
+            </label>
+        </div>
+    </form>
+</div>

@@ -13,7 +13,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'AboutCtrl'
       })
 
+      .state('sign_in', {
+          url: '/sign_in',
+          templateUrl: '/templates/sign_in.html',
+          controller: 'SignInCtrl'
+      })
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('home');
 });
-

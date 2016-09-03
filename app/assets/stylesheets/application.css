@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.page-content {
+    padding-top: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-weight: normal;
+}
+
