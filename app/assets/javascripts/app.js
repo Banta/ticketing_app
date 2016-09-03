@@ -1,4 +1,4 @@
-var app = angular.module("app", ['ngRoute', 'ui.router']);
+var app = angular.module("app", ['ngRoute', 'ui.router', 'ngMaterial', 'ngMessages']);
 app.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
       .state('home', {

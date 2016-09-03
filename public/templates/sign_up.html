@@ -1,28 +1,47 @@
 <div class="authform">
-    <form role="form" class="new_project_owner" id="new_project_owner" action="/project_owners" accept-charset="UTF-8"
-          method="post"><input name="utf8" type="hidden" value="&#x2713;"/><input type="hidden"
-                                                                                  name="authenticity_token"
-                                                                                  value="l3xmPmT8+Tk59OnJQ5dOWezc+rEgkDrM9nm4Hj6wbI7L4D8TxoGBUZ6GvEFotzzFnUk0hf/oQ4o81JTXfu8N6w=="/>
+    <form name="userForm" novalidate>
         <h3>Sign up</h3>
 
-        <div class="form-group">
-            <label for="project_owner_name">Name</label>
-            <input autofocus="autofocus" class="form-control" type="text" name="project_owner[name]"
-                   id="project_owner_name"/>
+        <div class="form-group" ng-class="{'has-error': userForm.name.$invalid && showErrors}">
+            <label class="control-label">Name</label>
+            <input autofocus="autofocus" class="form-control" type="text" name="name" name="phone"
+                   ng-model="data.name" required/>
+            <div class="help-block" ng-messages="userForm.name.$error" ng-show="showErrors">
+                <div ng-message-exp="['required']">Name is required</div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="project_owner_email">Email</label>
-            <input class="form-control" type="email" value="" name="project_owner[email]" id="project_owner_email"/>
+
+        <div class="form-group" ng-class="{'has-error': userForm.email.$invalid && showErrors}">
+            <label class="control-label">Email</label>
+            <input class="form-control" type="email" name="email" ng-model="data.email" ng-pattern="/^.+@.+\..+$/"
+                   required/>
+
+            <div class="help-block" ng-messages="userForm.email.$error" ng-show="showErrors">
+                <div ng-message-exp="['required']">Email is required</div>
+                <div ng-message-exp="['pattern']">Email format is not valid</div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="project_owner_password">Password</label>
-            <input class="form-control" type="password" name="project_owner[password]" id="project_owner_password"/>
+        <div class="form-group" ng-class="{'has-error': userForm.password.$invalid && showErrors}">
+            <label class="control-label">Password</label>
+            <input class="form-control" type="password" name="password" ng-model="data.password" ng-minlength="6"
+                   required/>
+
+            <div class="help-block" ng-messages="userForm.password.$error" ng-show="showErrors">
+                <div ng-message-exp="['required']">Password is required</div>
+                <div ng-message-exp="['minlength']">Password should be minimum of 6 characters</div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="project_owner_password_confirmation">Password confirmation</label>
-            <input class="form-control" type="password" name="project_owner[password_confirmation]"
-                   id="project_owner_password_confirmation"/>
+        <div class="form-group" ng-class="{'has-error': userForm.password_confirmation.$invalid && showErrors}">
+            <label class="control-label">Password confirmation</label>
+            <input class="form-control" type="password" name="password_confirmation"
+                   ng-model="data.password_confirmation" ng-pattern="data.password" required/>
+
+            <div class="help-block" ng-messages="userForm.password_confirmation.$error" ng-show="showErrors">
+                <div ng-message-exp="['required']">Password confirmation is required</div>
+                <div ng-message-exp="['pattern']">Password confirmation doesn't match password</div>
+            </div>
         </div>
-        <input type="submit" name="commit" value="Sign up" class="button right"/>
+        <input type="submit" name="commit" value="Sign up" ng-click="submitForm(userForm, data)"
+               class="button right"/>
     </form>
 </div>
