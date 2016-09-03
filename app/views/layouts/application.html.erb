@@ -8,13 +8,8 @@
 </head>
 <body>
 
-<p><a href="#home">Home</a></p>
-<p><a href="#about">About</a></p>
-<div ng-view></div>
-
-<script type="text/ng-template" id="home.html">
-  <h2> Home </h2>
-  {{message}}
-</script>
+<p><a ui-sref="home">Home</a></p>
+<p><a ui-sref="about">About</a></p>
+<ui-view></ui-view>
 </body>
 </html>
