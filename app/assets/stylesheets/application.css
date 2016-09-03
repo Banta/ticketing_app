@@ -21,3 +21,11 @@
     font-weight: normal;
 }
 
+.alert-messages {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: -1.5%;
+    position: fixed;
+    z-index: 9999;
+    width: 60%;
+}
