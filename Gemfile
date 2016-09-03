@@ -11,7 +11,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'devise' # Authentication gem
 gem 'sendgrid' # Send email using sendgrid
-gem 'figaro' # manages application.yml configurations file
+gem 'figaro' # Manages application.yml configurations file
+gem 'premailer-rails' # Gem for compiling html template emails
 
 group :development do
   gem 'web-console', '~> 2.0' # Access an IRB console on exception pages
