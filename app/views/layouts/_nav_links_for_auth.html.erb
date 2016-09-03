@@ -1,10 +1,9 @@
-<%# if project_owner_signed_in? %>
-<li><%= link_to 'My projects', '#' %></li>
+<!-- if user is signed in-->
 <li><%= link_to 'Edit account', '#' %></li>
 <li><%= link_to 'Sign out', '#', :method => 'delete' %></li>
-<%# else %>
+
+<!-- if user is not signed in-->
 <li><a ui-sref="about">About</a></li>
-<li><a href="mailto:info@fundisapp.com">Contact</a></li>
+<li><a href="mailto:info@ticketingappx.com">Contact</a></li>
 <li><%= link_to 'Sign in', '#' %></li>
 <li><%= link_to 'Sign up', '#' %></li>
-<%# end %>
