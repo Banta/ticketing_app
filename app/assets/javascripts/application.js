@@ -13,8 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require angular
-//= require angular-mocks
-//= require angular-route
-//= require app
+//= require angular/lib/angular.js
+//= require_tree ./angular/lib
+//= require angular/app.js
 //= require_tree .
