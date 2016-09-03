@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # Callbacks
+  before_create :generate_authentication_token!
 
   # Validations
   validates_uniqueness_of :auth_token
