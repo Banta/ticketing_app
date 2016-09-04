@@ -21,4 +21,4 @@ angular.module('app.services', ['ngCachedResource', 'app.utils'])
                 method: 'PUT'
             }
         })
-    }
+    })
