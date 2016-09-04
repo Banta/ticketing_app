@@ -36,6 +36,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'ForgotPasswordCtrl'
         })
 
+        .state('tickets', {
+            url: '/tickets',
+            templateUrl: '/templates/tickets.html',
+            controller: 'TicketsCtrl'
+        })
+
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('home');
 });
