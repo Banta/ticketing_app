@@ -1,47 +1,53 @@
 var app = angular.module("app", ['ngRoute', 'app.services', 'ui.router', 'ngMaterial', 'ngMessages', 'app.utils']);
 app.config(function ($stateProvider, $urlRouterProvider) {
+    $stateProvider.state('app', {
+        url: '/app',
+        abstract: true,
+        templateUrl: '/templates/app.html',
+        controller: 'AppCtrl'
+    })
     $stateProvider
-        .state('home', {
+        .state('app.home', {
             url: '/home',
             templateUrl: '/templates/home.html',
             controller: 'HomeCtrl'
         })
 
-        .state('about', {
+        .state('app.about', {
             url: '/about',
             templateUrl: '/templates/about.html',
             controller: 'AboutCtrl'
         })
 
-        .state('sign_in', {
+        .state('app.sign_in', {
             url: '/sign_in',
             templateUrl: '/templates/sign_in.html',
             controller: 'SignInCtrl'
         })
 
-        .state('sign_up', {
+        .state('app.sign_up', {
             url: '/sign_up',
             templateUrl: '/templates/sign_up.html',
             controller: 'SignUpCtrl'
         })
 
-        .state('confirmation', {
+        .state('app.confirmation', {
             url: '/confirmation?confirmation_token',
             controller: 'ConfirmationCtrl'
         })
 
-        .state('forgot_password', {
+        .state('app.forgot_password', {
             url: '/forgot_password',
             templateUrl: '/templates/forgot_password.html',
             controller: 'ForgotPasswordCtrl'
         })
 
-        .state('tickets', {
+        .state('app.tickets', {
             url: '/tickets',
             templateUrl: '/templates/tickets.html',
             controller: 'TicketsCtrl'
         })
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('home');
+    $urlRouterProvider.otherwise('app/home');
 });

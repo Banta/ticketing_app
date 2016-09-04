@@ -1,0 +1,34 @@
+<header>
+    <!-- navigation styled for Bootstrap 3.0 -->
+    <nav class="navbar-default navbar-fixed-top topnav">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a ui-sref="app.home" class="navbar-brand">Home</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- if user is signed in-->
+                    <li><a ui-sref="app.tickets">Tickets</a></li>
+                    <li><a ui-sref="app.tickets">Edit account</a></li>
+                    <li><a ui-sref="app.tickets">Sign out</a></li>
+                    <!-- if user is not signed in-->
+                    <li><a ui-sref="app.about">About</a></li>
+                    <li><a href="mailto:info@ticketingappx.com">Contact</a></li>
+                    <li><a ui-sref="app.sign_in">Sign in</a></li>
+                    <li><a ui-sref="app.sign_up">Sign up</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="page-content">
+    <ui-view></ui-view>
+</div>
+
