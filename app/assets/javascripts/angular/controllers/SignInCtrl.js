@@ -2,11 +2,6 @@ app.controller('SignInCtrl', function ($scope, $location, $localstorage, UserSes
     $scope.showErrors = false
     $scope.data = {}
 
-    if ($localstorage.getObject('alert')) {
-        $scope.alert = $localstorage.getObject('alert')
-        $localstorage.remove('alert')
-    }
-
     $scope.submitForm = function (userForm, data) {
 
         // Check if form has errors
@@ -18,15 +13,12 @@ app.controller('SignInCtrl', function ($scope, $location, $localstorage, UserSes
             user.$promise.then(
                 function (data) {
                     $localstorage.set('auth_token', data.auth_token)
-                    $localstorage.setObject('alert', {
-                        type: 'success',
-                        message: 'You are successfully logged in.'
-                    })
+                    $scope.flashNotice('You are successfully logged in.')
                     $location.path('/home')
                 },
                 function (err) {
                     console.log('Error logging in.')
-                    $scope.alert = {type: 'danger', message: 'Invalid email or password'}
+                    $scope.flashAlert('Invalid email or password')
                 }).finally(function () {
             })
         }

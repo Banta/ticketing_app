@@ -12,28 +12,19 @@ app.controller('ConfirmationCtrl', function ($scope, $location, $localstorage, $
                 $localstorage.setObject('user', data);
 
                 // Set a success alert
-                $localstorage.setObject('alert', {
-                    type: 'success',
-                    message: 'Email confirmed. Proceed with signing in'
-                })
+                $scope.flashNotice('Email confirmed. Proceed with signing in')
                 window.location = '/#sign_in'
             },
             function (err) {
                 console.log('Error confirming email' + JSON.stringify(err))
                 // Set a successfully alert message for the user
-                $localstorage.setObject('alert', {
-                    type: 'danger',
-                    message: 'Confirmation token is invalid'
-                })
+                $scope.flashAlert('Confirmation token is invalid')
                 window.location = '/#home'
             }).finally(function () {
         })
     } else {
         // Set a successfully alert message for the user
-        $localstorage.setObject('alert', {
-            type: 'danger',
-            message: 'Confirmation token is invalid'
-        })
+        $scope.flashAlert('Confirmation token is invalid')
         window.location = '/#home'
     }
 });

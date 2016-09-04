@@ -16,9 +16,8 @@ app.controller('SignUpCtrl', function ($scope, $location, $localstorage, User) {
                     console.log('User was successfully created: ' + JSON.stringify(data))
 
                     // Set a successfully alert message for the user
-                    $localstorage.setObject('alert', {type: 'success',
-                        message: 'A message with a confirmation link has been sent to your email address.' +
-                        'Please follow the link to activate your account.'})
+                    $scope.flashNotice('A message with a confirmation link has been sent to your email address.' +
+                        'Please follow the link to activate your account.')
 
                     // Redirect user to the login page
                     $location.path('/home')
@@ -29,7 +28,7 @@ app.controller('SignUpCtrl', function ($scope, $location, $localstorage, User) {
                     $.each(err.data.errors, function (key, value) {
                         message = message + key + ": " + value + "\n"
                     });
-                    
+
                     console.log(message)
                 }).finally(function () {
             });
