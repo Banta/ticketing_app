@@ -14,3 +14,11 @@ angular.module('app.services', ['ngCachedResource', 'app.utils'])
     .factory('UserSession', function ($cachedResource) {
         return $cachedResource('sessions', '/sessions/:id', {id: "@id"})
     })
+
+    .factory('UserPassword', function ($cachedResource) {
+        return $cachedResource('passwords', '/passwords/:id', {id: "@id"}, {
+            update: {
+                method: 'PUT'
+            }
+        })
+    }
