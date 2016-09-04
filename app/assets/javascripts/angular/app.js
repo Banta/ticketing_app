@@ -26,7 +26,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
 
         .state('app.sign_out', {
-            url: '/sign_in',
+            url: '/sign_out',
             controller: 'SignOutCtrl'
         })
 
