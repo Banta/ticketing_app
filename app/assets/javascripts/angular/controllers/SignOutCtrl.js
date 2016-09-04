@@ -1,10 +1,10 @@
-app.controller('SignOutCtrl', function ($scope, UserSession, $localstorage) {
+app.controller('SignOutCtrl', function ($scope, UserSession) {
     $scope.showProgress('Please wait...')
-    var user = UserSession.delete({id: $localstorage.get('auth_token')})
+    var user = UserSession.delete({id: $scope.getAuthToken()})
     user.$promise.then(
         function (data) {
-            $localstorage.remove('auth_token')
-            $scope.flashNotice('Signed our successfully.')
+            $scope.destroySession()
+            $scope.flashNotice('Signed out successfully.')
         },
         function (err) {
             $scope.flashAlert('An error occurred. Please contact support.')

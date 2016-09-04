@@ -2,8 +2,23 @@ app.controller('AppCtrl', function ($scope, $location, $localstorage, $state) {
     console.log('AppCtrl loaded')
 
     $scope.signed_in = false
+
     if ($localstorage.get('auth_token')) {
         $scope.signed_in = true
+    }
+
+    $scope.getAuthToken = function () {
+        return $localstorage.get('auth_token')
+    }
+
+    $scope.newSession = function (auth_token) {
+        $localstorage.set('auth_token', auth_token)
+        $scope.signed_in = true
+    }
+
+    $scope.destroySession = function () {
+        $localstorage.remove('auth_token')
+        $scope.signed_in = false
     }
 
     $scope.alert = {}

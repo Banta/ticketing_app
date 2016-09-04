@@ -1,4 +1,4 @@
-app.controller('SignInCtrl', function ($scope, $location, $localstorage, UserSession) {
+app.controller('SignInCtrl', function ($scope, UserSession) {
     $scope.showErrors = false
     $scope.data = {}
 
@@ -12,9 +12,9 @@ app.controller('SignInCtrl', function ($scope, $location, $localstorage, UserSes
             user.$save()
             user.$promise.then(
                 function (data) {
-                    $localstorage.set('auth_token', data.auth_token)
+                    $scope.newSession(data.auth_token)
                     $scope.flashNotice('You are successfully logged in.')
-                    $location.path('/home')
+                    $scope.redirect('home')
                 },
                 function (err) {
                     console.log('Error logging in.')
