@@ -26,6 +26,10 @@ app.controller('AppCtrl', function ($scope, $location, $localstorage, $state, Fl
         }
     }
 
+    $scope.getUser = function () {
+        return $localstorage.getObject('user')
+    }
+
     $scope.newSession = function (auth_token) {
         $localstorage.set('auth_token', auth_token)
         $scope.signed_in = true
