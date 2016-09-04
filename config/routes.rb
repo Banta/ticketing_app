@@ -6,6 +6,9 @@ Rails.application.routes.draw do
       resources :confirmations, only: [:create]
       resources :sessions, only: [:create, :destroy]
       resources :passwords, only: [:create, :update]
+
+
+      resources :tickets
     end
   end
 
