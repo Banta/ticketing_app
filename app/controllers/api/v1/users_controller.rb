@@ -9,7 +9,9 @@ class Api::V1::UsersController < Api::V1::BaseController
   def create
     user = User.new(user_params)
     if user.save
-      UserMailer.send_user_confimation_email(user.id).deliver!
+                                                               # Todo: This is not the best way to do i
+                                                               # It should be improved
+      UserMailer.send_user_confimation_email(user.id).deliver! unless Rails.env == 'test'
       render json: user, status: 201, location: [:api, user]
     else
       render json: { errors: user.errors }, status: 422
