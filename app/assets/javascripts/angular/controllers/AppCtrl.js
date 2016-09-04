@@ -17,4 +17,14 @@ app.controller('AppCtrl', function ($scope, $location, $localstorage) {
     $scope.flashAlert = function (message) {
         $scope.alert = {type: 'danger', message: message, show: true}
     }
+
+    // Show progress to the user
+    $scope.showProgress = function (message) {
+        // TODO
+    }
+
+    // Hide progress to the user
+    $scope.hideProgress = function (message) {
+        // TODO
+    }
 });
