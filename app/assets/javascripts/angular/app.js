@@ -53,6 +53,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'ConfirmationCtrl'
         })
 
+        .state('app.reset_password', {
+            url: '/password?reset_token',
+            templateUrl: '/templates/reset_password.html',
+            controller: 'ResetPasswordCtrl'
+        })
+
         .state('app.forgot_password', {
             url: '/forgot_password',
             templateUrl: '/templates/forgot_password.html',
