@@ -234,6 +234,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   mysql2 (>= 0.3.13, < 0.5)
+  nokogiri
   premailer-rails
   rails (= 4.2.5.2)
   rspec-rails

@@ -13,6 +13,7 @@ gem 'devise' # Authentication gem
 gem 'sendgrid' # Send email using sendgrid
 gem 'figaro' # Manages application.yml configurations file
 gem 'premailer-rails' # Gem for compiling html template emails
+gem 'nokogiri'
 
 group :development do
   gem 'web-console', '~> 2.0' # Access an IRB console on exception pages
