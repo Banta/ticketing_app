@@ -24,6 +24,7 @@ app.controller('SignInCtrl', function ($scope, UserSession) {
                 function (err) {
                     console.log('Error logging in.')
                     $scope.flashAlert('Invalid email or password')
+                    $scope.data = {}
                 }).finally(function () {
             })
         }
