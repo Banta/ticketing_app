@@ -10,7 +10,7 @@ class Api::V1::PasswordsController < Api::V1::BaseController
       UserMailer.send_user_reset_password_email(user.id).deliver! unless Rails.env == 'test'
       render json: user, status: 200, location: [:api, user]
     else
-      render json: { errors: "Invalid email or password" }, status: 422
+      render json: { errors: 'Invalid email' }, status: 404
     end
   end
 
