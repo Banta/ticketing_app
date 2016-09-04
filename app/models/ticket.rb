@@ -7,6 +7,14 @@ class Ticket < ActiveRecord::Base
   enum status: [:pending, :resolved, :canceled]
 
   # Callbacks
+  after_initialize :set_defaults, if: :new_record?
 
   # Validations
+  validates_presence_of :title, :desc
+
+
+  private
+  def set_defaults
+    self.status ||= :pending
+  end
 end
