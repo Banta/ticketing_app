@@ -1,3 +1,3 @@
-app.controller('TicketsCtrl', function($scope, $localstorage) {
-    $scope.flashAlert('Invalid email or password')
+app.controller('TicketsCtrl', function($scope) {
+    $scope.authenticate_user()
 });

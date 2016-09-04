@@ -11,6 +11,13 @@ app.controller('AppCtrl', function ($scope, $location, $localstorage, $state, Fl
         return $localstorage.get('auth_token')
     }
 
+    $scope.authenticate_user = function () {
+        if ($scope.signed_in === false) {
+            $scope.flashAlert('Please sign in first to proceed.')
+            $scope.redirect('home')
+        }
+    }
+
     $scope.newSession = function (auth_token) {
         $localstorage.set('auth_token', auth_token)
         $scope.signed_in = true
