@@ -1,4 +1,4 @@
-app.controller('AppCtrl', function ($scope, $location, $localstorage) {
+app.controller('AppCtrl', function ($scope, $location, $localstorage, $state) {
     console.log('AppCtrl loaded')
 
     $scope.signed_in = false
@@ -26,5 +26,9 @@ app.controller('AppCtrl', function ($scope, $location, $localstorage) {
     // Hide progress to the user
     $scope.hideProgress = function (message) {
         // TODO
+    }
+
+    $scope.redirect = function (page) {
+        $state.go('app.' + page)
     }
 });
