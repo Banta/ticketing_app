@@ -1,4 +1,9 @@
 app.controller('SignUpCtrl', function ($scope, $location, $localstorage, User) {
+    if ($scope.signed_in) {
+        $scope.flashAlert('You are already signed in.')
+        $scope.redirect('home')
+    }
+
     $scope.showErrors = false
     $scope.data = {}
 
