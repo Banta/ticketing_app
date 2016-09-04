@@ -7,6 +7,7 @@ class Api::V1::ConfirmationsController < Api::V1::BaseController
 
     if user
       user.generate_authentication_token!
+      user.confirmed = true
       user.save
       render json: user, status: 201, location: [:api, user]
     else
