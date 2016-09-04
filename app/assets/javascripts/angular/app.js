@@ -25,6 +25,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'SignInCtrl'
         })
 
+        .state('app.sign_out', {
+            url: '/sign_in',
+            controller: 'SignOutCtrl'
+        })
+
         .state('app.sign_up', {
             url: '/sign_up',
             templateUrl: '/templates/sign_up.html',
