@@ -25,6 +25,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'SignUpCtrl'
         })
 
+        .state('confirmation', {
+            url: '/confirmation?confirmation_token',
+            controller: 'ConfirmationCtrl'
+        })
+
         .state('forgot_password', {
             url: '/forgot_password',
             templateUrl: '/templates/forgot_password.html',
