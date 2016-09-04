@@ -19,13 +19,12 @@ class Api::V1::PasswordsController < Api::V1::BaseController
   end
 
   def update
-    user = User.find(params[:id])
+    user = User.find_by(id: params[:id], auth_token: params[:user][:reset_token])
 
     if user && user.update_attributes(password: params[:user][:password])
-      user.confirm
       render json: user, status: 200, location: [:api, user]
     else
-      render json: { errors: user.errors }, status: 422
+      render json: { errors: 'Password could not be changed' }, status: 422
     end
   end
 end
