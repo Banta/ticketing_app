@@ -8,5 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
+
+  devise_for :users, only: []
   root 'static_pages#index'
 end
