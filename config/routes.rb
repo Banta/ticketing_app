@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :users, only: [:show, :create, :update, :destroy]
       resources :confirmations, only: [:create]
       resources :sessions, only: [:create, :destroy]
+      resources :passwords, only: [:create, :update]
     end
   end
 
