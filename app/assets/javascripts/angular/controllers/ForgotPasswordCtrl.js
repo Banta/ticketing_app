@@ -6,25 +6,31 @@ app.controller('ForgotPasswordCtrl', function($scope, UserPassword) {
         $scope.redirect('home')
     }
 
-    $scope.showErrors = false;
-    $scope.data = {};
+    $scope.showErrors = false
+    $scope.data = {}
 
     $scope.submitForm = function (userForm, data) {
         if (userForm.$invalid == true) {
             $scope.showErrors = true
         } else {
             $scope.showProgress('Please wait...')
-            var user = new UserPassword({user: $scope.data});
+            var user = new UserPassword({user: $scope.data})
             user.$save()
             user.$promise.then(
                 function (data) {
-                    $localstorage.setObject('user', data);
                     console.log('Request sent successfully: ' + JSON.stringify(data))
+                    $scope.flashNotice('A message with password reset instructions has been sent to your' +
+                        ' email address.')
                     $scope.redirect('home')
                 },
                 function (err) {
-                    console.log('Error saving user.');
-                    $scope.flashAlert('Error occurred please contact support.')
+                    console.log('Error saving user: ' + JSON.stringify(err))
+                    if (err.status === 404) {
+                        $scope.flashAlert('Email does not exist.')
+                    } else {
+                        $scope.flashAlert('Error occurred please contact support.')
+                    }
+                    $scope.data = {}
                 }).finally(function () {
                 $scope.hideProgress()
             });
