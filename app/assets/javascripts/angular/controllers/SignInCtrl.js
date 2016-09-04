@@ -1,7 +1,12 @@
 app.controller('SignInCtrl', function ($scope, UserSession) {
+    if ($scope.signed_in) {
+        $scope.flashAlert('You are already signed in.')
+        $scope.redirect('home')
+    }
+
     $scope.showErrors = false
     $scope.data = {}
-
+    
     $scope.submitForm = function (userForm, data) {
 
         // Check if form has errors
