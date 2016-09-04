@@ -3,7 +3,7 @@
         <h3>Sign in</h3>
 
         <div class="form-group" ng-class="{'has-error': userForm.email.$invalid && showErrors}">
-            <a class="right" ui-sref="sign_up">Sign up</a>
+            <a class="right" ui-sref="app.sign_up">Sign up</a>
             <label class="control-label">Email</label>
             <input autofocus="autofocus" class="form-control" type="email" name="email" ng-model="data.email"
                    ng-pattern="/^.+@.+\..+$/"
