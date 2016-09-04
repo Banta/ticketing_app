@@ -5,10 +5,14 @@ class Api::V1::PasswordsController < Api::V1::BaseController
     user = user_email.present? && User.find_by(email: user_email)
 
     if user
+      # Generate a new authentication tocken that will be used as an email
+      # reseting password
+      user.generate_authentication_token!
+      user.save
                                                                       # Todo: This is not the best way to do i
                                                                       # It should be improved
       UserMailer.send_user_reset_password_email(user.id).deliver! unless Rails.env == 'test'
-      render json: user, status: 200, location: [:api, user]
+      render json: {reset_token: user.auth_token}, status: 200, location: [:api, user]
     else
       render json: { errors: 'Invalid email' }, status: 404
     end
