@@ -29,10 +29,6 @@
 </header>
 <div class="page-content">
     <!--Flash message-->
-    <div class="alert alert-{{alert.type}} alert-messages" ng-show="alert.show">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <div id="flash_{{alert.type}}">{{alert.message}}</div>
-    </div>
-
+    <flash-message></flash-message>
     <ui-view></ui-view>
 </div>

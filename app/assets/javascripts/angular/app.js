@@ -1,4 +1,5 @@
-var app = angular.module("app", ['ngRoute', 'app.services', 'ui.router', 'ngMaterial', 'ngMessages', 'app.utils']);
+var app = angular.module("app", ['ngRoute', 'app.services', 'ui.router', 'ngMaterial', 'ngMessages',
+        'app.utils', 'ngFlash'])
 app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state('app', {
         url: '/app',

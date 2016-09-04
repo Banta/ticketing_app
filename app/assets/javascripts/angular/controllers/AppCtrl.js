@@ -1,4 +1,4 @@
-app.controller('AppCtrl', function ($scope, $location, $localstorage, $state) {
+app.controller('AppCtrl', function ($scope, $location, $localstorage, $state, Flash) {
     console.log('AppCtrl loaded')
 
     $scope.signed_in = false
@@ -21,16 +21,14 @@ app.controller('AppCtrl', function ($scope, $location, $localstorage, $state) {
         $scope.signed_in = false
     }
 
-    $scope.alert = {}
-
     // Show success alert messages
     $scope.flashNotice = function (message) {
-        $scope.alert = {type: 'success', message: message, show: true}
+        Flash.create('success', message)
     }
 
     // Show danger alert messages
     $scope.flashAlert = function (message) {
-        $scope.alert = {type: 'danger', message: message, show: true}
+        Flash.create('danger', message)
     }
 
     // Show progress to the user
