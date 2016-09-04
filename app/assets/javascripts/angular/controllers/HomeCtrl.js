@@ -1,4 +1,4 @@
-app.controller('HomeCtrl', function($scope) {
+app.controller('HomeCtrl', function($scope, $localstorage) {
     
     // Check if there is a flash message sent from another controller
     if ($localstorage.getObject('alert')) {
