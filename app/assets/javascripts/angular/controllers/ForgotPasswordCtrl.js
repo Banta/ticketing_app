@@ -18,7 +18,8 @@ app.controller('ForgotPasswordCtrl', function($scope, UserPassword) {
             user.$save()
             user.$promise.then(
                 function (data) {
-                    console.log('Request sent successfully: ' + JSON.stringify(data))
+                    console.log('Request sent successfully')
+                    $scope.setPassResetToken(data.reset_token)
                     $scope.flashNotice('A message with password reset instructions has been sent to your' +
                         ' email address.')
                     $scope.redirect('home')

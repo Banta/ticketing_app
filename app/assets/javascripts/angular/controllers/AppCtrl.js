@@ -11,6 +11,14 @@ app.controller('AppCtrl', function ($scope, $location, $localstorage, $state, Fl
         return $localstorage.get('auth_token')
     }
 
+    $scope.passResetToken = function () {
+        return $localstorage.get('reset_token')
+    }
+
+    $scope.setPassResetToken = function (reset_token) {
+        $localstorage.set('reset_token', reset_token)
+    }
+
     $scope.authenticate_user = function () {
         if ($scope.signed_in === false) {
             $scope.flashAlert('Please sign in first to proceed.')
