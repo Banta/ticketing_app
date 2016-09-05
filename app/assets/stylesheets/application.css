@@ -97,3 +97,7 @@
     left: calc(50% - 45px);
     z-index: 10;
 }
+
+a[ng-click]{
+    cursor: pointer;
+}

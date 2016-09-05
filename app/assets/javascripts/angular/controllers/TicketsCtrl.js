@@ -64,5 +64,19 @@ app.controller('TicketsCtrl', function ($scope, Ticket) {
         $scope.showErrors = false
         $('#add-ticket-modal').modal('toggle')
     }
+
+    $scope.showTicket = function (ticket_id) {
+        $scope.showProgress()
+        Ticket.get({id: ticket_id}).$promise.then(
+            function (data) {
+                $scope.ticket = data
+                $('#show-ticket-modal').modal('toggle')
+            },
+            function (err) {
+                $scope.flashAlert('Error occured. Please try again or contact support.')
+            }).finally(function () {
+            $scope.hideProgress()
+        })
+    }
 })
     
