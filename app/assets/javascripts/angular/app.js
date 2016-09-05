@@ -1,5 +1,5 @@
 var app = angular.module("app", ['ngRoute', 'app.services', 'ui.router', 'ngMaterial', 'ngMessages',
-        'app.utils', 'ngFlash'])
+        'app.utils', 'ngFlash', 'angularSpinners'])
 
     .run(function ($http, $localstorage, $state, $rootScope) {
         $http.defaults.headers.common.Authorization = $localstorage.get('auth_token')

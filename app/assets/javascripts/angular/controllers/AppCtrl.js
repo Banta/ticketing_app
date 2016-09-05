@@ -1,4 +1,4 @@
-app.controller('AppCtrl', function ($scope, $location, $localstorage, $state, Flash) {
+app.controller('AppCtrl', function ($scope, $location, $localstorage, $state, spinnerService, Flash) {
     console.log('AppCtrl loaded')
 
     $scope.signed_in = false
@@ -51,13 +51,13 @@ app.controller('AppCtrl', function ($scope, $location, $localstorage, $state, Fl
     }
 
     // Show progress to the user
-    $scope.showProgress = function (message) {
-        // TODO
+    $scope.showProgress = function () {
+        spinnerService.show('html5spinner');
     }
 
     // Hide progress to the user
-    $scope.hideProgress = function (message) {
-        // TODO
+    $scope.hideProgress = function () {
+        spinnerService.hide('html5spinner');
     }
 
     $scope.redirect = function (page) {
