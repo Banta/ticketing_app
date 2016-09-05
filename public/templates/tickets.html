@@ -90,11 +90,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group" ng-class="{'has-error': userForm.desc.$invalid && showErrors}">
+                    <div class="form-group" ng-class="{'has-error': ticketForm.desc.$invalid && showErrors}">
                         <label class="control-label">Description</label>
                         <textarea class="form-control" rows="5" type="text" name="desc" ng-model="data.desc" required/>
 
-                        <div class="help-block" ng-messages="userForm.desc.$error" ng-show="showErrors">
+                        <div class="help-block" ng-messages="ticketForm.desc.$error" ng-show="showErrors">
                             <div ng-message-exp="['required']">Description is required</div>
                         </div>
                     </div>
