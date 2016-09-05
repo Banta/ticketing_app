@@ -19,7 +19,7 @@
 
             <div class="col-md-3 pull-right">
                 <div class="btn-group btn-group pull-right">
-                    <button class="btn btn-primary" type="button" data-toggle="modal"
+                    <button ng-if="isUser()" class="btn btn-primary" type="button" data-toggle="modal"
                             data-target="#add-ticket-modal"><i class="fa fa-plus">
                     </i> Add new ticket
                     </button>
@@ -70,7 +70,7 @@
 </div>
 
 <!-- Add ticket modal -->
-<div class="modal fade" id="add-ticket-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div ng-if="isUser()" class="modal fade" id="add-ticket-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
