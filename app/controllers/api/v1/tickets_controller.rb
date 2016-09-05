@@ -12,6 +12,16 @@ class Api::V1::TicketsController < Api::V1::BaseController
     render json: tickets, status: 200
   end
 
+  def show
+    ticket = Ticket.find_by(id: params[:id])
+
+    if ticket
+      render json: ticket, status: 200, location: [:api, ticket]
+    else
+      render json: {}, status: 404
+    end
+  end
+
   def create
     ticket = current_user.tickets.new(ticket_params)
 
