@@ -14,3 +14,7 @@ email_provider_username: username
 email_provider_password: password
 domain_name: localhost:3000
 secret_key_base: a94d28249328......f88e23fd7b1044
+admin_email: admin@example.com
+admin_password: changeme
+agent_email: agent@example.com
+agent_password: changeme
