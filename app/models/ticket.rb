@@ -14,7 +14,7 @@ class Ticket < ActiveRecord::Base
 
 
   def closed_time
-    cloased_at.strftime("%b %d, %Y %H:%M") if cloased_at
+    closed_at.strftime("%b %d, %Y %H:%M") if closed_at
   end
 
 
