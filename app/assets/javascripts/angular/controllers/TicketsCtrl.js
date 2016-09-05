@@ -4,6 +4,8 @@ app.controller('TicketsCtrl', function ($scope, Ticket) {
         $scope.redirect('sign_in')
     }
 
+    $scope.searchTicket = ''
+
     $scope.showProgress()
     Ticket.query().$promise.then(
         function (data) {
