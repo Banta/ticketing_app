@@ -9,6 +9,6 @@ class Api::V1::TicketsController < Api::V1::BaseController
       tickets = Ticket.all.order("created_at DESC")
     end
 
-    render json: tickets, status: 200, location: [:api, tickets]
+    render json: tickets, status: 200
   end
 end
