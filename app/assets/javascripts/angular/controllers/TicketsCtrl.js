@@ -9,7 +9,7 @@ app.controller('TicketsCtrl', function ($scope, Ticket) {
     $scope.showProgress()
     Ticket.query().$promise.then(
         function (data) {
-            console.log('Show all tickets ' + JSON.stringify(data))
+            console.log('All tickets displayed')
             $scope.tickets = data
         },
         function (err) {
@@ -35,7 +35,10 @@ app.controller('TicketsCtrl', function ($scope, Ticket) {
             ticket.$save()
             ticket.$promise.then(
                 function (data) {
-                    console.log('Ticket was successfully created: ' + JSON.stringify(data))
+                    console.log('Ticket was successfully created')
+
+                    // Append the newly added ticket
+                    $scope.tickets.push(data)
 
                     // Set a successfully alert message for the user
                     $scope.flashNotice('Ticket was successfully created.')
@@ -44,7 +47,7 @@ app.controller('TicketsCtrl', function ($scope, Ticket) {
                     $scope.redirect('tickets')
                 },
                 function (err) {
-                    console.log('Error saving user.' + JSON.stringify(err))
+                    console.log('Error saving ticket')
 
                     // Alert user about the error
                     $scope.flashAlert('An error occurred. Please contact support.')

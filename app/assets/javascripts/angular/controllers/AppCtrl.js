@@ -1,5 +1,4 @@
 app.controller('AppCtrl', function ($scope, $location, $localstorage, $state, spinnerService, Flash) {
-    console.log('AppCtrl loaded')
 
     $scope.signed_in = false
 
