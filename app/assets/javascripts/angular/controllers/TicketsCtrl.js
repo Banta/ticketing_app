@@ -78,5 +78,13 @@ app.controller('TicketsCtrl', function ($scope, Ticket) {
             $scope.hideProgress()
         })
     }
+
+    $scope.generatePdf = function () {
+        base_string = (Math.random().toString(36)+'00000000000000000').slice(2, 10)
+        ecrypted = CryptoJS.HmacSHA1(base_string, "7IXjCVCfuq1t4PDFNT6YX6Bd")
+        signature =  CryptoJS.enc.Base64.stringify(ecrypted)
+
+        window.open('/static_pages/tickets_pdf.pdf?signature='+signature+'&base_string='+base_string, '_blank');
+    }
 })
     

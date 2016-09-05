@@ -23,8 +23,8 @@
                             data-target="#add-ticket-modal"><i class="fa fa-plus">
                     </i> Add new ticket
                     </button>
-                    <button ng-if="isNotUser()" class="btn btn-primary" type="button"><i class="fa fa-file-pdf-o"></i>
-                        Export pdf
+                    <button ng-if="isNotUser()" class="btn btn-primary" type="button" ng-click="generatePdf()">
+                        <i class="fa fa-file-pdf-o"></i> Export pdf
                     </button>
                 </div>
             </div>
