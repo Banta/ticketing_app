@@ -14,7 +14,8 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav pull-right">
                     <!-- if user is signed in-->
-                    <li ng-if="signed_in"><a ui-sref="app.tickets">Tickets</a></li>
+                    <li ng-if="signed_in && isUser()"><a ui-sref="app.tickets">My tickets</a></li>
+                    <li ng-if="signed_in && isNotUser()"><a ui-sref="app.tickets">Support tickets</a></li>
                     <li ng-if="signed_in"><a ui-sref="app.tickets">Edit account</a></li>
                     <!-- if user is not signed in-->
                     <li><a ui-sref="app.about">About</a></li>
