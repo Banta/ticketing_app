@@ -13,6 +13,7 @@ app.controller('SignInCtrl', function ($scope, UserSession) {
         if (userForm.$invalid == true) {
             $scope.showErrors = true
         } else {
+            $scope.showProgress()
             var user = new UserSession({session: $scope.data})
             user.$save()
             user.$promise.then(
@@ -26,6 +27,7 @@ app.controller('SignInCtrl', function ($scope, UserSession) {
                     $scope.flashAlert('Invalid email or password')
                     $scope.data = {}
                 }).finally(function () {
+                $scope.hideProgress()
             })
         }
     }
