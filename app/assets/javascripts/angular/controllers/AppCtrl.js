@@ -30,8 +30,29 @@ app.controller('AppCtrl', function ($scope, $location, $localstorage, $state, sp
         return $localstorage.getObject('user')
     }
 
-    $scope.newSession = function (auth_token) {
+    $scope.userRole = function () {
+        return $localstorage.get('user_role')
+    }
+
+    $scope.isRole = function (role) {
+        return $scope.userRole() === role
+    }
+
+    $scope.isUser = function () {
+        return $scope.isRole('user')
+    }
+
+    $scope.isAgent = function () {
+        return $scope.isRole('agent')
+    }
+
+    $scope.isAdmin = function () {
+        return $scope.isRole('admin')
+    }
+
+    $scope.newSession = function (auth_token, role) {
         $localstorage.set('auth_token', auth_token)
+        $localstorage.set('user_role', role)
         $scope.signed_in = true
     }
 

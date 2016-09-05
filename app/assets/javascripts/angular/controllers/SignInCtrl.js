@@ -18,7 +18,7 @@ app.controller('SignInCtrl', function ($scope, UserSession) {
             user.$save()
             user.$promise.then(
                 function (data) {
-                    $scope.newSession(data.auth_token)
+                    $scope.newSession(data.auth_token, data.role)
                     $scope.flashNotice('You are successfully logged in.')
                     $scope.redirect('home')
                 },
