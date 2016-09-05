@@ -41,7 +41,7 @@ app.controller('TicketsCtrl', function ($scope, Ticket) {
                     $scope.flashNotice('Ticket was successfully created.')
 
                     // Redirect user to the login page
-                    $location.path('/tickets')
+                    $scope.redirect('tickets')
                 },
                 function (err) {
                     console.log('Error saving user.' + JSON.stringify(err))
