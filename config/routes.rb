@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
 
   devise_for :users, only: []
+  get 'static_pages/tickets_pdf'
   root 'static_pages#index'
 end
