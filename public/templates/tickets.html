@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <h3 ng-if="isUser()">My Tickets</h3>
-        <h3 ng-if="isUser() != true">Support Tickets</h3>
+        <h3 ng-if="isNotUser()">Support Tickets</h3>
 
         <table class="table table-bordered table-striped">
             <thead>

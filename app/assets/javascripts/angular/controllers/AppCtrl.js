@@ -42,6 +42,10 @@ app.controller('AppCtrl', function ($scope, $location, $localstorage, $state, sp
         return $scope.isRole('user')
     }
 
+    $scope.isNotUser = function () {
+        return $scope.isRole('user') != true
+    }
+
     $scope.isAgent = function () {
         return $scope.isRole('agent')
     }
