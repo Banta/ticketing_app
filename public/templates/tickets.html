@@ -1,5 +1,43 @@
 <div class="row">
     <div class="col-md-12">
-        <h3>Tickets</h3>
+        <h3 ng-if="isUser()">My Tickets</h3>
+        <h3 ng-if="isUser() != true">Support Tickets</h3>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+            <th>
+                <a ng-click="sortType = 'title'; sortReverse = !sortReverse">Title
+                    <span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <th>
+                <a ng-click="sortType = 'desc'; sortReverse = !sortReverse">Description
+                    <span ng-show="sortType == 'desc' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'desc' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <th>
+                <a ng-click="sortType = 'status'; sortReverse = !sortReverse">Status
+                    <span ng-show="sortType == 'status' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'status' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <th>
+                <a ng-click="sortType = 'created_at'; sortReverse = !sortReverse">Created at
+                    <span ng-show="sortType == 'created_at' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'created_at' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="ticket in tickets | orderBy:sortType:sortReverse">
+                <td>{{ticket.title}}</td>
+                <td>{{ticket.desc}}</td>
+                <td>{{ticket.status}}</td>
+                <td>{{ticket.created_at}}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
