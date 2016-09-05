@@ -19,4 +19,23 @@ app.controller('TicketsCtrl', function ($scope, Ticket) {
         .finally(function () {
             $scope.hideProgress()
         })
+
+    $scope.showErrors = false
+    $scope.data = {}
+
+    $scope.submitForm = function (ticketForm, data) {
+
+        // Check if form has errors
+        if (ticketForm.$invalid == true) {
+            $scope.showErrors = true
+        } else {
+        }
+    }
+
+    $scope.closeSubmitForm = function () {
+        $scope.data = {}
+        $scope.showErrors = false
+        $('#add-ticket-modal').modal('toggle')
+    }
 })
+    
