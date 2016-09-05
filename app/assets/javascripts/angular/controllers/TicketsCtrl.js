@@ -29,6 +29,30 @@ app.controller('TicketsCtrl', function ($scope, Ticket) {
         if (ticketForm.$invalid == true) {
             $scope.showErrors = true
         } else {
+            $('#add-ticket-modal').modal('toggle')
+            $scope.showProgress()
+            var ticket = new Ticket({ticket: $scope.data})
+            ticket.$save()
+            ticket.$promise.then(
+                function (data) {
+                    console.log('Ticket was successfully created: ' + JSON.stringify(data))
+
+                    // Set a successfully alert message for the user
+                    $scope.flashNotice('Ticket was successfully created.')
+
+                    // Redirect user to the login page
+                    $location.path('/tickets')
+                },
+                function (err) {
+                    console.log('Error saving user.' + JSON.stringify(err))
+
+                    // Alert user about the error
+                    $scope.flashAlert('An error occurred. Please contact support.')
+                })
+                .finally(function () {
+                    $scope.hideProgress()
+                    $scope.data = {}
+                })
         }
     }
 
