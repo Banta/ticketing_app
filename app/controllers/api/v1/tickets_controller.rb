@@ -11,4 +11,20 @@ class Api::V1::TicketsController < Api::V1::BaseController
 
     render json: tickets, status: 200
   end
+
+  def create
+    ticket = current_user.tickets.new(ticket_params)
+
+    if ticket.save
+      render json: ticket, status: 201, location: [:api, ticket]
+    else
+      render json: {errors: ticket.errors}, status: 422
+    end
+  end
+
+  private
+
+  def ticket_params
+    params.require(:ticket).permit(:title, :desc)
+  end
 end
