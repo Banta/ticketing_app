@@ -1,5 +1,5 @@
 app.controller('SignOutCtrl', function ($scope, UserSession) {
-    $scope.showProgress('Please wait...')
+    $scope.showProgress()
     var user = UserSession.delete({id: $scope.getAuthToken()})
     user.$promise.then(
         function (data) {

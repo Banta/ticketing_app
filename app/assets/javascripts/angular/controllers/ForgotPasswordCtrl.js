@@ -13,7 +13,7 @@ app.controller('ForgotPasswordCtrl', function($scope, UserPassword) {
         if (userForm.$invalid == true) {
             $scope.showErrors = true
         } else {
-            $scope.showProgress('Please wait...')
+            $scope.showProgress()
             var user = new UserPassword({user: $scope.data})
             user.$save()
             user.$promise.then(

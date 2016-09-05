@@ -14,7 +14,7 @@ app.controller('ResetPasswordCtrl', function ($scope, $location, $localstorage, 
         if (userForm.$invalid == true) {
             $scope.showErrors = true
         } else {
-            $scope.showProgress('Please wait...')
+            $scope.showProgress()
 
             var user = UserPassword.update({
                 id: $scope.getUser().id,
