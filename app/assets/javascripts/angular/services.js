@@ -24,6 +24,10 @@ angular.module('app.services', ['ngCachedResource', 'app.utils'])
     })
 
     .factory('Ticket', function ($cachedResource) {
-        return $cachedResource('tickets', '/tickets/:id', {id: "@id"})
+        return $cachedResource('tickets', '/tickets/:id', {id: "@id"}, {
+            update: {
+                method: 'PUT'
+            }
+        })
     })
 

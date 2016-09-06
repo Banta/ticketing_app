@@ -139,11 +139,11 @@
                         <strong>Actions</strong><br/><br/>
                         <div class="btn-group pull-left" role="group" aria-label="...">
                             <button ng-if="ticket.status === 'pending'" type="button"
-                                    ng-click="approveTicket(ticket.id)" class="btn btn-primary">
+                                    ng-click="changeTicketStatus(ticket.id, 1)" class="btn btn-primary">
                                 Approve
                             </button>
                             <button ng-if="ticket.status === 'approved'" type="button"
-                                    ng-click="closeTicket(ticket.id)"
+                                    ng-click="changeTicketStatus(ticket.id, 2)"
                                     class="btn btn-danger">
                                 Close
                             </button>

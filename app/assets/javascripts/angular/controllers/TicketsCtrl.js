@@ -73,25 +73,33 @@ app.controller('TicketsCtrl', function ($scope, Ticket) {
                 $('#show-ticket-modal').modal('toggle')
             },
             function (err) {
-                $scope.flashAlert('Error occured. Please try again or contact support.')
+                $scope.flashAlert('Error occurred. Please try again or contact support.')
             }).finally(function () {
             $scope.hideProgress()
         })
     }
 
     $scope.generatePdf = function () {
-        base_string = (Math.random().toString(36)+'00000000000000000').slice(2, 10)
+        base_string = (Math.random().toString(36) + '00000000000000000').slice(2, 10)
         ecrypted = CryptoJS.HmacSHA1(base_string, "7IXjCVCfuq1t4PDFNT6YX6Bd")
-        signature =  CryptoJS.enc.Base64.stringify(ecrypted)
+        signature = CryptoJS.enc.Base64.stringify(ecrypted)
 
-        window.open('/static_pages/tickets_pdf.pdf?signature='+signature+'&base_string='+base_string, '_blank');
+        window.open('/static_pages/tickets_pdf.pdf?signature=' + signature + '&base_string=' + base_string, '_blank');
     }
 
-    $scope.approveTicket = function (ticket_id) {
-        console.log('Approve ticket: '+ticket_id)
-    }
-
-    $scope.closeTicket = function (ticket_id) {
-        console.log('Close ticket: '+ticket_id)
+    $scope.changeTicketStatus = function (ticket_id, status_id) {
+        $scope.showProgress()
+        ticket = Ticket.update({id: ticket_id, ticket: {status: status_id}})
+        ticket.$promise.then(
+            function (data) {
+                $scope.ticket = data
+                $scope.flashNotice('Successfully changed status')
+            },
+            function (err) {
+                $scope.flashAlert('Error occurred. Please try again or contact support.')
+            })
+            .finally(function () {
+                $scope.hideProgress()
+            })
     }
 })
