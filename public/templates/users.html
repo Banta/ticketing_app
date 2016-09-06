@@ -130,6 +130,14 @@
                             <div ng-message-exp="['pattern']">Password confirmation doesn't match password</div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label">Role</label>
+                        <select class="form-control" ng-model="data.role">
+                            <option value="user">User</option>
+                            <option value="agent">Agent</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -172,6 +180,15 @@
                             <div ng-message-exp="['required']">Email is required</div>
                             <div ng-message-exp="['pattern']">Email format is not valid</div>
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Role</label>
+                        <select class="form-control" ng-model="data.role">
+                            <option value="user">User</option>
+                            <option value="agent">Agent</option>
+                            <option value="admin">Admin</option>
+                        </select>
                     </div>
                 </form>
             </div>

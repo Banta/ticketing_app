@@ -24,7 +24,7 @@ app.controller('UsersCtrl', function ($scope, User, Auser) {
     }
 
     $scope.showErrors = false
-    $scope.data = {}
+    $scope.data = {role: 'user'}
 
     $scope.submitForm = function (userForm, data) {
 
