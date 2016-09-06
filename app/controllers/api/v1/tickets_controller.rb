@@ -36,7 +36,9 @@ class Api::V1::TicketsController < Api::V1::BaseController
     ticket = Ticket.find_by(id: params[:id])
 
     if ticket
+      user = ticket.user
       if ticket.update(update_ticket_params)
+        UserMailer.ticket_status_change_notification(ticket.id, user.id).deliver!
         render json: ticket, status: 201, location: [:api, ticket]
       else
         render json: {errors: ticket.errors}, status: 422
