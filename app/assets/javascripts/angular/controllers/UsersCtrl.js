@@ -67,6 +67,7 @@ app.controller('UsersCtrl', function ($scope, User, Auser) {
 
     $scope.editUser = function (user_id) {
         $scope.showProgress()
+        $scope.own_account = ($scope.getUser().id === user_id)
         Auser.get({id: user_id}).$promise.then(
             function (data) {
                 $scope.user = data

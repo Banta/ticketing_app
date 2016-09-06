@@ -182,7 +182,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div ng-if="own_account != true" class="form-group">
                         <label class="control-label">Role</label>
                         <select class="form-control" ng-model="data.role">
                             <option value="user">User</option>
