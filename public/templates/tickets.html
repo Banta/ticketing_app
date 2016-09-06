@@ -136,7 +136,7 @@
                 <br/><br/>
                 <div ng-if="isNotUser()" class="row">
                     <div class="col-md-6">
-                        <strong>Actions</strong><br/><br/>
+                        <strong ng-if="ticket.status != 'closed'">Actions</strong><br/><br/>
                         <div class="btn-group pull-left" role="group" aria-label="...">
                             <button ng-if="ticket.status === 'pending'" type="button"
                                     ng-click="changeTicketStatus(ticket.id, 1)" class="btn btn-primary">

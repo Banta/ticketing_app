@@ -88,6 +88,7 @@ app.controller('TicketsCtrl', function ($scope, Ticket) {
     }
 
     $scope.changeTicketStatus = function (ticket_id, status_id) {
+        $('#show-ticket-modal').modal('toggle')
         $scope.showProgress()
         ticket = Ticket.update({id: ticket_id, ticket: {status: status_id}})
         ticket.$promise.then(
@@ -99,6 +100,15 @@ app.controller('TicketsCtrl', function ($scope, Ticket) {
                 $scope.flashAlert('Error occurred. Please try again or contact support.')
             })
             .finally(function () {
+                Ticket.query().$promise.then(
+                    function (data) {
+                        console.log('All tickets displayed')
+                        $scope.tickets = data
+                    },
+                    function (err) {
+                        console.log('Show all tickets failed')
+                        $scope.flashAlert('Error loading page. Please contact support.')
+                    })
                 $scope.hideProgress()
             })
     }
