@@ -2,6 +2,20 @@ class Api::V1::UsersController < Api::V1::BaseController
   before_action :authenticate_with_token!, only: [:update, :destroy]
   respond_to :json
 
+  def index
+    if current_user.admin?
+      users = User.all.order('created_at DESC')
+
+      render json: users, status: 200
+    else
+      render json: {}, status: 401
+    end
+  end
+
+  def show
+    respond_with User.find(params[:id])
+  end
+
   def create
     user = User.new(user_params)
     if user.save
@@ -22,6 +36,11 @@ class Api::V1::UsersController < Api::V1::BaseController
     else
       render json: {errors: user.errors}, status: 422
     end
+  end
+
+  def destroy
+    current_user.destroy
+    head 204
   end
 
   private
