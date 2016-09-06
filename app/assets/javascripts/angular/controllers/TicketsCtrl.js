@@ -86,5 +86,12 @@ app.controller('TicketsCtrl', function ($scope, Ticket) {
 
         window.open('/static_pages/tickets_pdf.pdf?signature='+signature+'&base_string='+base_string, '_blank');
     }
+
+    $scope.approveTicket = function (ticket_id) {
+        console.log('Approve ticket: '+ticket_id)
+    }
+
+    $scope.closeTicket = function (ticket_id) {
+        console.log('Close ticket: '+ticket_id)
+    }
 })
-    

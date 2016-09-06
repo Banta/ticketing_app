@@ -133,6 +133,23 @@
                         <p>{{ticket.desc}}</p>
                     </div>
                 </div>
+                <br/><br/>
+                <div ng-if="isNotUser()" class="row">
+                    <div class="col-md-6">
+                        <strong>Actions</strong><br/><br/>
+                        <div class="btn-group pull-left" role="group" aria-label="...">
+                            <button ng-if="ticket.status === 'pending'" type="button"
+                                    ng-click="approveTicket(ticket.id)" class="btn btn-primary">
+                                Approve
+                            </button>
+                            <button ng-if="ticket.status === 'approved'" type="button"
+                                    ng-click="closeTicket(ticket.id)"
+                                    class="btn btn-danger">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
