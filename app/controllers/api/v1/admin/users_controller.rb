@@ -7,6 +7,30 @@ class Api::V1::Admin::UsersController < Api::V1::BaseController
     render json: users, status: 200
   end
 
+  def show
+    user = User.find_by(id: params[:id])
+
+    if user
+      render json: user, status: 200, location: [:api, user]
+    else
+      render json: {}, status: 404
+    end
+  end
+
+  def update
+    user = User.find_by(id: params[:id])
+
+    if user
+      if user.update_attributes(user_params)
+        render json: user, status: 200, location: [:api, user]
+      else
+        render json: {errors: user.errors}, status: 422
+      end
+    else
+      render json: {}, status: 404
+    end
+  end
+
   def create
     user = User.new(user_params)
     user.confirmed = true
@@ -20,7 +44,7 @@ class Api::V1::Admin::UsersController < Api::V1::BaseController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :role)
   end
 
   def authenticate_admin!
