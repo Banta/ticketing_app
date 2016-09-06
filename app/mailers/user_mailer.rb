@@ -15,4 +15,11 @@ class UserMailer < ApplicationMailer
     @user = User.find_by(id: user_id)
     mail to: @user.email, subject: 'Reset password email'
   end
+
+  def ticket_status_change_notification(ticket_id, user_id)
+    @user = User.find_by(id: user_id)
+    @ticket = Ticket.find_by(id: ticket_id)
+
+    mail to: @user.email, subject: 'Ticket status change notification'
+  end
 end

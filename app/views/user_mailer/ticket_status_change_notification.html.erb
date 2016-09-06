@@ -1,0 +1,64 @@
+<table class="body-wrap">
+  <tr>
+    <td></td>
+    <td class="container" width="600">
+      <div class="content">
+        <table class="main" width="100%" cellpadding="0" cellspacing="0">
+          <tr>
+            <td class="alert alert-warning">
+              <%= @ticket.title[0..10] %>... changed status to <%= @ticket.status %>
+            </td>
+          </tr>
+          <tr>
+            <td class="content-wrap">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="content-block">
+                    Hi <%= @user.name %>,
+                  </td>
+                </tr>
+                <tr>
+                  <td class="content-block">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <strong>Title</strong>
+                        <p><%= @ticket.title %></p>
+
+                        <strong>Status</strong>
+                        <p><%= @ticket.status %></p>
+                      </div>
+                      <div class="col-md-6">
+                        <strong>Description</strong>
+                        <p><%= @ticket.desc %></p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="content-block">
+                    <%= link_to "Confirm email",
+                                "#{root_url}#/app/password?reset_token=#{@user.auth_token}", class: "btn-primary" %>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="content-block">
+                    <p>Best,<br/> TicketsAppX Team</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <div class="footer">
+          <table width="100%">
+            <tr>
+              <td class="aligncenter content-block">Powered by
+                <a href="http://bantatechnologies.com/">Banta Technologies</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </td>
+    <td></td>
+  </tr>
+</table>
