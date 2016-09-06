@@ -71,6 +71,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'TicketsCtrl'
         })
 
+        .state('app.users', {
+            url: '/users',
+            templateUrl: '/templates/users.html',
+            controller: 'UsersCtrl'
+        })
+
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('app/home');
 });
