@@ -4,7 +4,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :user
 
   # Enums
-  enum status: [:pending, :resolved, :canceled]
+  enum status: [:pending, :approved, :closed]
 
   # Callbacks
   after_initialize :set_defaults, if: :new_record?
