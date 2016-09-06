@@ -1,0 +1,159 @@
+<div class="row">
+    <div class="col-md-12">
+        <h3 ng-if="isUser()">My Tickets</h3>
+        <h3 ng-if="isNotUser()">Support Tickets</h3>
+
+        <div class="row">
+
+            <div class="col-md-3 pull-right">
+                <form>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                            <input type="text" class="form-control" placeholder="Search a ticket"
+                                   ng-model="searchTicket">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-3 pull-right">
+                <div class="btn-group btn-group pull-right">
+                    <button ng-if="isUser()" class="btn btn-primary" type="button" data-toggle="modal"
+                            data-target="#add-ticket-modal"><i class="fa fa-plus">
+                    </i> Add new ticket
+                    </button>
+                    <button ng-if="isNotUser()" class="btn btn-primary" type="button" ng-click="generatePdf()">
+                        <i class="fa fa-file-pdf-o"></i> Export pdf
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+            <th>
+                <a ng-click="sortType = 'title'; sortReverse = !sortReverse">Title
+                    <span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <th>
+                <a ng-click="sortType = 'desc'; sortReverse = !sortReverse">Description
+                    <span ng-show="sortType == 'desc' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'desc' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <th>
+                <a ng-click="sortType = 'status'; sortReverse = !sortReverse">Status
+                    <span ng-show="sortType == 'status' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'status' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <th>
+                <a ng-click="sortType = 'created_at'; sortReverse = !sortReverse">Created at
+                    <span ng-show="sortType == 'created_at' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'created_at' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="ticket in tickets | orderBy:sortType:sortReverse | filter:searchTicket">
+                <td><a ng-click="showTicket(ticket.id)">{{ticket.title}}</a></td>
+                <td>{{ticket.desc}}</td>
+                <td>{{ticket.status}}</td>
+                <td>{{ticket.created_at}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add ticket modal -->
+<div ng-if="isUser()" class="modal fade" id="add-ticket-modal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add ticket</h4>
+            </div>
+            <div class="modal-body">
+                <form name="ticketForm" novalidate>
+                    <div class="form-group" ng-class="{'has-error': ticketForm.title.$invalid && showErrors}">
+                        <label class="control-label">Title</label>
+                        <input autofocus="autofocus" class="form-control" type="text" name="title"
+                               ng-model="data.title" required/>
+
+                        <div class="help-block" ng-messages="ticketForm.title.$error" ng-show="showErrors">
+                            <div ng-message-exp="['required']">Title is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error': ticketForm.desc.$invalid && showErrors}">
+                        <label class="control-label">Description</label>
+                        <textarea class="form-control" rows="5" type="text" name="desc" ng-model="data.desc" required/>
+
+                        <div class="help-block" ng-messages="ticketForm.desc.$error" ng-show="showErrors">
+                            <div ng-message-exp="['required']">Description is required</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="closeSubmitForm()">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="submitForm(ticketForm, data)">Save ticket
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Show details modal -->
+<div class="modal fade" id="show-ticket-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Ticket details</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Title</strong>
+                        <p>{{ticket.title}}</p>
+
+                        <strong>Status</strong>
+                        <p>{{ticket.status}}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Description</strong>
+                        <p>{{ticket.desc}}</p>
+                    </div>
+                </div>
+                <br/><br/>
+                <div ng-if="isNotUser()" class="row">
+                    <div class="col-md-6">
+                        <strong ng-if="ticket.status != 'closed'">Actions</strong><br/><br/>
+                        <div class="btn-group pull-left" role="group" aria-label="...">
+                            <button ng-if="ticket.status === 'pending'" type="button"
+                                    ng-click="changeTicketStatus(ticket.id, 1)" class="btn btn-primary">
+                                Approve
+                            </button>
+                            <button ng-if="ticket.status === 'approved'" type="button"
+                                    ng-click="changeTicketStatus(ticket.id, 2)"
+                                    class="btn btn-danger">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
