@@ -7,6 +7,10 @@ Rails.application.routes.draw do
       resources :sessions, only: [:create, :destroy]
       resources :passwords, only: [:create, :update]
 
+      namespace :admin do
+        resources :users
+      end
+
 
       resources :tickets
     end

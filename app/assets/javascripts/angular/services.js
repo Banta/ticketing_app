@@ -3,6 +3,10 @@ angular.module('app.services', ['ngCachedResource', 'app.utils'])
         return $cachedResource('users', '/users/:id', {id: "@id"})
     })
 
+    .factory('Auser', function ($cachedResource) {
+        return $cachedResource('users', '/admin/users/:id', {id: "@id"})
+    })
+
     .factory('Confirmation', function ($cachedResource) {
         return $cachedResource('confirmation', '/confirmations', {id: "@id"})
     })
