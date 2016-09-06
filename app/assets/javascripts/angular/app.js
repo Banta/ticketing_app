@@ -2,12 +2,12 @@ var app = angular.module("app", ['ngRoute', 'app.services', 'ui.router', 'ngMate
         'app.utils', 'ngFlash', 'angularSpinners'])
 
     .run(function ($http, $localstorage, $state, $rootScope) {
-        $http.defaults.headers.common.Authorization = $localstorage.get('auth_token')
         $http.defaults.headers.common.Accept = 'application/vnd.tickets.v1'
 
         $rootScope.$on('$stateChangeStart',
             function (event, toState, toParams, fromState, fromParams) {
                 // This will be executed every time a state changes
+                $http.defaults.headers.common.Authorization = $localstorage.get('auth_token')
             })
     })
 
