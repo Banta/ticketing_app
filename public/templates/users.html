@@ -64,3 +64,70 @@
         </table>
     </div>
 </div>
+
+
+<!-- Add ticket modal -->
+<div class="modal fade" id="add-user-modal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add user</h4>
+            </div>
+            <div class="modal-body">
+                <form name="userForm" novalidate>
+                    <div class="form-group" ng-class="{'has-error': userForm.name.$invalid && showErrors}">
+                        <label class="control-label">Name</label>
+                        <input autofocus="autofocus" class="form-control" type="text" name="name" name="phone"
+                               ng-model="data.name" required/>
+                        <div class="help-block" ng-messages="userForm.name.$error" ng-show="showErrors">
+                            <div ng-message-exp="['required']">Name is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error': userForm.email.$invalid && showErrors}">
+                        <label class="control-label">Email</label>
+                        <input class="form-control" type="email" name="email" ng-model="data.email"
+                               ng-pattern="/^.+@.+\..+$/"
+                               required/>
+
+                        <div class="help-block" ng-messages="userForm.email.$error" ng-show="showErrors">
+                            <div ng-message-exp="['required']">Email is required</div>
+                            <div ng-message-exp="['pattern']">Email format is not valid</div>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': userForm.password.$invalid && showErrors}">
+                        <label class="control-label">Password</label>
+                        <input class="form-control" type="password" name="password" ng-model="data.password"
+                               ng-minlength="6"
+                               required/>
+
+                        <div class="help-block" ng-messages="userForm.password.$error" ng-show="showErrors">
+                            <div ng-message-exp="['required']">Password is required</div>
+                            <div ng-message-exp="['minlength']">Password should be minimum of 6 characters</div>
+                        </div>
+                    </div>
+                    <div class="form-group"
+                         ng-class="{'has-error': userForm.password_confirmation.$invalid && showErrors}">
+                        <label class="control-label">Password confirmation</label>
+                        <input class="form-control" type="password" name="password_confirmation"
+                               ng-model="data.password_confirmation" ng-pattern="data.password" required/>
+
+                        <div class="help-block" ng-messages="userForm.password_confirmation.$error"
+                             ng-show="showErrors">
+                            <div ng-message-exp="['required']">Password confirmation is required</div>
+                            <div ng-message-exp="['pattern']">Password confirmation doesn't match password</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="closeSubmitForm()">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="submitForm(userForm, data)">Save user
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
