@@ -19,7 +19,8 @@ app.controller('ForgotPasswordCtrl', function($scope, UserPassword) {
             user.$promise.then(
                 function (data) {
                     console.log('Request sent successfully')
-                    $scope.setPassResetToken(data.reset_token)
+                    $scope.setPassResetToken(data.auth_token)
+                    $scope.setUser(data)
                     $scope.flashNotice('A message with password reset instructions has been sent to your' +
                         ' email address.')
                     $scope.redirect('home')

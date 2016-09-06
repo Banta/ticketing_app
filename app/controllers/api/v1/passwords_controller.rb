@@ -12,7 +12,7 @@ class Api::V1::PasswordsController < Api::V1::BaseController
                                                                       # Todo: This is not the best way to do i
                                                                       # It should be improved
       UserMailer.send_user_reset_password_email(user.id).deliver! unless Rails.env == 'test'
-      render json: {reset_token: user.auth_token}, status: 200, location: [:api, user]
+      render json: user, status: 200, location: [:api, user]
     else
       render json: { errors: 'Invalid email' }, status: 404
     end

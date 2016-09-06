@@ -29,6 +29,11 @@ app.controller('AppCtrl', function ($scope, $location, $localstorage, $state, sp
         return $localstorage.getObject('user')
     }
 
+    $scope.setUser = function (user) {
+        return $localstorage.setObject('user', user)
+        return $localstorage.setObject('user', user)
+    }
+
     $scope.userRole = function () {
         return $localstorage.get('user_role')
     }
