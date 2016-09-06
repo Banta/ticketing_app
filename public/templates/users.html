@@ -52,13 +52,22 @@
                     <span ng-show="sortType == 'created_at' && sortReverse" class="fa fa-caret-up"></span>
                 </a>
             </th>
+            <th>Actions</th>
             </thead>
             <tbody>
             <tr ng-repeat="user in users | orderBy:sortType:sortReverse | filter:searchUser">
-                <td><a ng-click="showTicket(ticket.id)">{{user.name}}</a></td>
+                <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.role}}</td>
                 <td>{{user.created_at}}</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a ng-click="editUser(user.id)" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                        <a ng-click="deleteUser(user.id)" class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </div>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -126,6 +135,50 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" ng-click="closeSubmitForm()">Close</button>
                 <button type="button" class="btn btn-primary" ng-click="submitForm(userForm, data)">Save user
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit ticket modal -->
+<div class="modal fade" id="edit-user-modal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Update user</h4>
+            </div>
+            <div class="modal-body">
+                <form name="editUserForm" novalidate>
+                    <div class="form-group" ng-class="{'has-error': userForm.name.$invalid && showErrors}">
+                        <label class="control-label">Name</label>
+                        <input autofocus="autofocus" class="form-control" type="text" name="name" name="phone"
+                               ng-model="data.name" required/>
+                        <div class="help-block" ng-messages="userForm.name.$error" ng-show="showErrors">
+                            <div ng-message-exp="['required']">Name is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error': userForm.email.$invalid && showErrors}">
+                        <label class="control-label">Email</label>
+                        <input class="form-control" type="email" name="email" ng-model="data.email"
+                               ng-pattern="/^.+@.+\..+$/"
+                               required/>
+
+                        <div class="help-block" ng-messages="userForm.email.$error" ng-show="showErrors">
+                            <div ng-message-exp="['required']">Email is required</div>
+                            <div ng-message-exp="['pattern']">Email format is not valid</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="updateUser(editUserForm, data, user.id)">
+                    Update user
                 </button>
             </div>
         </div>

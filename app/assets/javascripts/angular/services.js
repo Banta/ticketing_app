@@ -4,7 +4,11 @@ angular.module('app.services', ['ngCachedResource', 'app.utils'])
     })
 
     .factory('Auser', function ($cachedResource) {
-        return $cachedResource('users', '/admin/users/:id', {id: "@id"})
+        return $cachedResource('users', '/admin/users/:id', {id: "@id"}, {
+            update: {
+                method: 'PUT'
+            }
+        })
     })
 
     .factory('Confirmation', function ($cachedResource) {
