@@ -53,6 +53,10 @@ app.controller('AppCtrl', function ($scope, $location, $localstorage, $state, sp
         return $scope.isRole('admin')
     }
 
+    $scope.isNotAdmin = function () {
+        return $scope.isRole('admin') != true
+    }
+
     $scope.newSession = function (auth_token, role) {
         $localstorage.set('auth_token', auth_token)
         $localstorage.set('user_role', role)
