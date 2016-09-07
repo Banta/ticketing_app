@@ -24,6 +24,12 @@ gem 'rails_12factor', group: :production
 group :development do
   gem 'web-console', '~> 2.0' # Access an IRB console on exception pages
   gem 'spring' # Spring speeds up development
+
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails', '~> 1.1.0'
+  gem 'capistrano-rails-console'
+  gem 'capistrano-rvm', '~> 0.1.1'
 end
 
 group :development, :test do
