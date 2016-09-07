@@ -6,7 +6,7 @@ set :repo_url, 'git@github.com:Banta/ticketing_app.git'
 set :rails_env, 'production'
 set :rvm_roles, [:app, :web]
 set :rvm_type, :user                     # Defaults to: :auto
-set :rvm_ruby_version, '2.3.0@rails'  # Defaults to: 'default'
+set :rvm_ruby_version, 'ruby-2.3.0@rails'  # Defaults to: 'default'
 set :default_stage, 'production'
 
 set :log_level, :debug
