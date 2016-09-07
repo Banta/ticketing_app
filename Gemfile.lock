@@ -117,6 +117,7 @@ GEM
       pkg-config (~> 1.1.7)
     orm_adapter (0.5.0)
     pdf-core (0.6.1)
+    pg (0.18.4)
     pkg-config (1.1.7)
     prawn (2.1.0)
       pdf-core (~> 0.6.1)
@@ -242,6 +243,7 @@ DEPENDENCIES
   launchy
   mysql2 (>= 0.3.13, < 0.5)
   nokogiri
+  pg
   prawn
   prawn-table
   premailer-rails
