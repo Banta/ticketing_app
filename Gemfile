@@ -18,6 +18,8 @@ gem 'nokogiri'
 gem 'prawn'
 gem 'prawn-table'
 
+gem 'rails_12factor', group: :production
+
 group :development do
   gem 'web-console', '~> 2.0' # Access an IRB console on exception pages
   gem 'spring' # Spring speeds up development
