@@ -18,6 +18,7 @@ gem 'premailer-rails' # Gem for compiling html template emails
 gem 'nokogiri'
 gem 'prawn'
 gem 'prawn-table'
+gem 'therubyracer'
 
 group :development do
   gem 'web-console', '~> 2.0' # Access an IRB console on exception pages
