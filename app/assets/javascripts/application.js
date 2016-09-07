@@ -13,9 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require angular/lib/angular
+//= require_tree ./angular/lib
+//= require angular/app
 //= require hmac-sha1
 //= require enc-base64
-//= require angular/lib/angular.js
-//= require_tree ./angular/lib
-//= require angular/app.js
 //= require_tree .
