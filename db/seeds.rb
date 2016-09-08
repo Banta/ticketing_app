@@ -9,6 +9,7 @@
 
 puts 'Create admin user'
 admin = User.find_or_create_by(email: Figaro.env.admin_email) do |admin|
+  admin.name = 'Admin User'
   admin.password = Figaro.env.admin_password
   admin.role = :admin
   if admin.save
@@ -19,6 +20,7 @@ end
 
 puts 'Create agent user'
 agent = User.find_or_create_by(email: Figaro.env.agent_email) do |agent|
+  agent.name = 'Agent User'
   agent.password = Figaro.env.agent_password
   agent.role = :agent
   if agent.save
