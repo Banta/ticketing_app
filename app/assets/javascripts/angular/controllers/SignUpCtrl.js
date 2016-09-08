@@ -13,6 +13,7 @@ app.controller('SignUpCtrl', function ($scope, $location, $localstorage, User) {
         if (userForm.$invalid == true) {
             $scope.showErrors = true
         } else {
+            $scope.showProgress()
             var user = new User({user: $scope.data}); // *Note: setting the bound param (`id` in this case) is *required*
             user.$save();
             user.$promise.then(
@@ -35,8 +36,10 @@ app.controller('SignUpCtrl', function ($scope, $location, $localstorage, User) {
                     });
 
                     console.log(message)
-                }).finally(function () {
-            });
+                })
+                .finally(function () {
+                    $scope.hideProgress()
+                })
         }
     }
 });
