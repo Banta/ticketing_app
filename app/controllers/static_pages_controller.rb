@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
     require 'openssl'
     require 'base64'
 
-    tickets = Ticket.where(created_at: 30.days.ago..Time.now)
+    tickets = Ticket.where(closed_at: 30.days.ago..Time.now)
 
     signature = params[:signature] # Signature received from client
     base_string = params[:base_string] # Base string received from client

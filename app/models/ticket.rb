@@ -8,6 +8,7 @@ class Ticket < ActiveRecord::Base
 
   # Callbacks
   after_initialize :set_defaults, if: :new_record?
+  before_save :check_if_closed
 
   # Validations
   validates_presence_of :title, :desc
@@ -21,5 +22,11 @@ class Ticket < ActiveRecord::Base
   private
   def set_defaults
     self.status ||= :pending
+  end
+
+  def check_if_closed
+    if closed?
+      self.closed_at = Time.now.utc
+    end
   end
 end
